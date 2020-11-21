@@ -7,7 +7,6 @@ export default ({ setDrawerSelector = () => { }, backgroundColor = '#2c2c2e', se
     setDrawerSelector(() => { setmodalVisible(true) });
     return (
         <View>
-
             <Modal animationType='slide' transparent={true} visible={modalVisible} >
                 <View style={{ width: Dimensions.get("window").width, position: 'absolute', bottom: 0, backgroundColor: backgroundColor }}>
                     <TouchableOpacity onPress={() => setmodalVisible(false)} style={{ flex: 1, backgroundColor: 'white', height: itemHeight, justifyContent: 'center', borderBottomWidth: 0.5, borderBottomColor: seperatingLineColor, ...titleContainerStyle }}>
