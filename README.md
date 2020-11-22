@@ -52,19 +52,26 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 import DrawerSelector from 'react-native-drawer-item-selector';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0
+    };
+  }
   render() {
-    var setmodalVisible;
+    // setDrawerVisible() will be used to open the drawer
+    var setDrawerVisible;
     const setDrawerSelector = (func) => {
-      setmodalVisible = func;
+      setDrawerVisible = func;
     }
     return (
       <View style={styles.view}>
         <Text style={styles.text}>Hello World React Native!</Text>
         <Button
-          onPress={() => { setmodalVisible(); }}
+          onPress={() => { setDrawerVisible(); }}
           title='Open Drawer'
         />
-        <DrawerSelector data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
+        <DrawerSelector index={this.state.index} setIndex={(value) => this.setState({ index: value })} data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
       </View>
     );
   }
@@ -72,7 +79,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#c3b3b3',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -86,31 +93,34 @@ const styles = StyleSheet.create({
 #### Functional component
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
 import DrawerSelector from 'react-native-drawer-item-selector';
 
 const App = () => {
-  var setmodalVisible;
+  const [index, setIndex] = useState(0);
+  // setDrawerVisible() will be used to open the drawer
+  var setDrawerVisible;
   const setDrawerSelector = (func) => {
-    setmodalVisible = func;
+    setDrawerVisible = func;
   }
   return (
-      <View style={styles.view}>
-        <Text style={styles.text}>Hello World React Native!</Text>
-        <Button
-          onPress={() => { setmodalVisible(); }}
-          title='Open Drawer'
-        />
-        <DrawerSelector data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
-      </View>
+    <View style={styles.view}>
+      <Text style={styles.text}>Hello World React Native!</Text>
+      <Button
+        onPress={() => { setDrawerVisible(); }}
+        title='Open Drawer'
+      />
+      <DrawerSelector index={index} setIndex={setIndex} data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
+    </View>
   );
 };
 
+
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#c3b3b3',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -127,7 +137,9 @@ export default App;
 
 | Props            | Type     | Description                                             |
 | ---------------- | -------- | ------------------------------------------------------- |
-| setDrawerSelector| function   | Takes function setmodalVisible and set setmodalVisible = True whenever setmodalVisible() is called |
+| index    | state : integer  |  Contains the index which is currently selected from data, initialised to 0 |
+| setIndex    | state : function  | Set hook function to set the value of index |
+| setDrawerSelector| function   | Takes function setDrawerVisible and set setDrawerVisible = True whenever setDrawerVisible() is called |
 | backgroundColor    | string  | Sets Drawer Background color, Default = '#2c2c2e'   |
 | selector | string   | Sets Selector type, takes only values = 'dot', 'square', Default = 'dot' |
 | selectorColor     | string   | Sets Selector Color, Default = 'red'             |

@@ -1,6 +1,6 @@
 {
   "name": "react-native-drawer-item-selector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Drawer Selector from given items component. Light Weight Component with maximum Customization features, Supports iOS and Android, No Configuration Required.",
   "main": "index.js",
   "scripts": {

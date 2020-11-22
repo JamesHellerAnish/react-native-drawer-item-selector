@@ -6,24 +6,26 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
 import DrawerSelector from './components/DrawerSelector';
 
 const App = () => {
-  var setmodalVisible;
+  const [index, setIndex] = useState(0);
+  // setDrawerVisible() will be used to open the drawer
+  var setDrawerVisible;
   const setDrawerSelector = (func) => {
-    setmodalVisible = func;
+    setDrawerVisible = func;
   }
   return (
     <View style={styles.view}>
       <Text style={styles.text}>Hello World React Native!</Text>
       <Button
-        onPress={() => { setmodalVisible(); }}
+        onPress={() => { setDrawerVisible(); }}
         title='Open Drawer'
       />
-      <DrawerSelector data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
+      <DrawerSelector index={index} setIndex={setIndex} data={[['1', 'Item 1', () => { console.log('Item 1 Selected') }], ['2', 'Item 2', () => { console.log('Item 2 Selected') }]]} setDrawerSelector={setDrawerSelector} />
     </View>
   );
 };
