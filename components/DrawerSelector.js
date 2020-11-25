@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, TouchableHighlight, Button, Dimensions, TouchableOpacity, TextInput, FlatList, Image, Text, Modal } from 'react-native';
+import { View, Dimensions, TouchableOpacity, FlatList, Text, Modal } from 'react-native';
 
 export default ({ index, setIndex, setDrawerSelector = () => { }, backgroundColor = '#2c2c2e', selector = 'dot', selectorColor = 'red', itemTextStyle = { color: '#ffffff' }, itemHeight = 60, itemContainerStyle = {}, seperatingLineColor = '#000000', title = 'Title', titleTextStyle = {}, titleContainerStyle = {}, data = [['1', 'Item 1', () => { }], ['2', 'Item 2', () => { }]] }) => {
     const [modalVisible, setmodalVisible] = useState(false);
     setDrawerSelector(() => { setmodalVisible(true) });
+
+    useEffect(() => {
+        return (() => {
+            setmodalVisible(false);
+        });
+    }, []);
     return (
         <View>
             <Modal animationType='slide' transparent={true} visible={modalVisible} >
@@ -17,7 +23,7 @@ export default ({ index, setIndex, setDrawerSelector = () => { }, backgroundColo
                     <FlatList
                         data={data}
                         keyExtractor={item => item[0]}
-                        renderItem={({ item, index : list_index }) => {
+                        renderItem={({ item, index: list_index }) => {
                             return (
                                 <TouchableOpacity onPress={() => {
                                     setIndex(list_index);
