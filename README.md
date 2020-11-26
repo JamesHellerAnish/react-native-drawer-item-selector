@@ -151,6 +151,7 @@ export default App;
 | titleTextStyle | object  | Sets text style for title |
 | titleContainerStyle | object  | Sets style for title container           |
 | data          | array | Sets data for Drawer, at each index ['ID', 'Item Name', ()=>{  //Function to perform  }], Default = [['1', 'Item 1', () => { }], ['2', 'Item 2', () => { }]]          |
+| animationType | string  | Sets animation of drawer, Default = 'slide', All Options = 'slide', 'fade', 'none' |
 
 
 ## License
