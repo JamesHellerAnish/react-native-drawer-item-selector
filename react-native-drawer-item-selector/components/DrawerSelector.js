@@ -8,12 +8,6 @@ export default ({ index, setIndex, setDrawerSelector = () => { }, backgroundColo
         setmodalVisible(true)
     });
 
-    useEffect(() => {
-
-        return (() => {
-            setmodalVisible(false);
-        });
-    }, []);
     return (
         <View>
             <Modal animationType={animationType} transparent={true} visible={modalVisible} >
