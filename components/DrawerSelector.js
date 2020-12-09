@@ -30,8 +30,9 @@ export default ({ index, setIndex, setDrawerSelector = () => { }, backgroundColo
                                     <Text style={{ fontSize: 16, ...itemTextStyle }}>
                                         {item[1]}
                                     </Text>
-                                    {index == list_index && selector == 'dot' ? <View style={{ backgroundColor: selectorColor, height: 10, width: 10, borderRadius: 10 }} /> : null}
                                     {index == list_index && selector == 'square' ? <View style={{ backgroundColor: selectorColor, height: 10, width: 10 }} /> : null}
+                                    {index == list_index && selector != 'square' ? <View style={{ backgroundColor: selectorColor, height: 10, width: 10, borderRadius: 10 }} /> : null}
+
                                 </TouchableOpacity>
                             );
                         }}
